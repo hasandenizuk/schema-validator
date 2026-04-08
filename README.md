@@ -71,59 +71,19 @@ curl -O https://raw.githubusercontent.com/hasandenizuk/schema-validator/main/val
 
 **Requirements:** Python 3.6+ (stdlib only, no pip install needed)
 
-## AI Coding Assistant Integration
+## Use as an AI Coding Assistant Skill
 
-This repo includes a `SKILL.md` that follows the [agentskills.io](https://agentskills.io) open standard. It works with Claude Code, OpenAI Codex CLI, and Google Gemini CLI.
+This repo includes a `SKILL.md` following the [agentskills.io](https://agentskills.io) open standard. Clone it into your skills directory and your AI assistant can validate schema markup on command - no manual script invocation needed.
 
-### Claude Code
+| AI Coding Assistant | Install command |
+|---|---|
+| **Claude Code** | `git clone https://github.com/hasandenizuk/schema-validator.git ~/.claude/skills/validate-schema` |
+| **OpenAI Codex CLI** | `git clone https://github.com/hasandenizuk/schema-validator.git ~/.agents/skills/validate-schema` |
+| **Google Gemini CLI** | `git clone https://github.com/hasandenizuk/schema-validator.git ~/.gemini/skills/validate-schema` |
 
-```bash
-# Clone into Claude Code skills directory
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.claude/skills/validate-schema
+After installing, the skill activates when you say "validate schema", "check structured data", "rich results check", or type `/validate-schema`. The assistant runs the validator, interprets P0/P1/P2 results, and offers to fix issues directly.
 
-# Now use it from any project:
-# /validate-schema
-```
-
-### OpenAI Codex CLI
-
-```bash
-# Clone into the cross-platform agents skills directory
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.agents/skills/validate-schema
-
-# Or into the Codex-specific path
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.codex/skills/validate-schema
-```
-
-### Google Gemini CLI
-
-```bash
-# Clone into Gemini skills directory
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.gemini/skills/validate-schema
-
-# Or use the cross-platform path (also works)
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.agents/skills/validate-schema
-```
-
-### Cross-platform (all three CLIs)
-
-The `~/.agents/skills/` path is recognized by both Codex CLI and Gemini CLI natively. For Claude Code, symlink it:
-
-```bash
-# Install once
-git clone https://github.com/hasandenizuk/schema-validator.git \
-  ~/.agents/skills/validate-schema
-
-# Symlink for Claude Code
-ln -s ~/.agents/skills/validate-schema ~/.claude/skills/validate-schema
-```
-
-Once installed, the skill activates when you mention "validate schema", "check structured data", "rich results", or invoke `/validate-schema`.
+> **Cross-platform tip:** The `~/.agents/skills/` path works for both Codex CLI and Gemini CLI. To cover all three from one install, clone there and symlink for Claude Code: `ln -s ~/.agents/skills/validate-schema ~/.claude/skills/validate-schema`
 
 ## Usage
 
