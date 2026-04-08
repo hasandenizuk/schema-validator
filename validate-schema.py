@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-Validate JSON-LD structured data across HTML pages.
+Schema Validator - Validate JSON-LD structured data across HTML pages.
+
+GitHub:  https://github.com/hasandenizuk/schema-validator
+Author:  Hasan Deniz (https://hasandeniz.com)
+License: MIT
 
 Three validation layers:
-  Layer 1: JSON syntax — valid JSON, no parsing errors, bad character detection
-  Layer 2: Schema.org basics — @context, @type, known vocabulary
-  Layer 3: Google Rich Results rules — required/recommended fields per type
+  Layer 1: JSON syntax - valid JSON, no parsing errors, bad character detection
+  Layer 2: Schema.org basics - @context, @type, known vocabulary
+  Layer 3: Google Rich Results rules - required/recommended fields per type
 
 Severity levels:
-  P0 error   — blocks rich results (invalid JSON, missing required fields)
-  P1 warning — missing recommended field (won't block but limits snippets)
-  P2 info    — non-standard usage, suggestions
+  P0 error   - blocks rich results (invalid JSON, missing required fields)
+  P1 warning - missing recommended field (won't block but limits snippets)
+  P2 info    - non-standard usage, suggestions
 
 Usage:
   python3 validate-schema.py <html-root>                 # validate all HTML files

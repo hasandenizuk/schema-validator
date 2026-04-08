@@ -4,6 +4,8 @@ A zero-dependency Python CLI tool that validates JSON-LD structured data in HTML
 
 Run it on any static site, CMS output, or build directory to catch schema errors before Google does.
 
+**Author:** [Hasan Deniz](https://hasandeniz.com) | **GitHub:** [hasandenizuk/schema-validator](https://github.com/hasandenizuk/schema-validator) | **License:** MIT
+
 ## Why This Exists
 
 Google Search Console reports structured data errors days or weeks after crawling. By then, your pages have been live with broken or incomplete schema markup, missing rich results opportunities.
@@ -203,14 +205,17 @@ Generate a JSON report for analysis or integration with other SEO tools:
 python3 validate-schema.py public/ --json > schema-report.json
 ```
 
-### 6. Claude Code skill (for Claude Code users)
+### 6. AI coding assistant skill
 
-Drop the script into your tools directory and create a skill to invoke it from any project:
+Works as a skill for Claude Code, OpenAI Codex CLI, and Google Gemini CLI. Once installed (see [AI skill install](#use-as-an-ai-coding-assistant-skill) above), just tell your assistant:
 
-```bash
-/validate-schema          # validates current project
-/validate-schema --verbose  # with P2 info
 ```
+/validate-schema              # validates current project
+"check structured data"       # natural language trigger
+"validate schema on dist/"    # with directory
+```
+
+The assistant runs the validator, reads the P0/P1/P2 results, and offers to fix the issues for you.
 
 ## How It Compares
 
@@ -259,6 +264,14 @@ The research found:
 - The npm/pip ecosystem for schema.org validation is fragmented
 
 So we built one. It runs in under 2 seconds on 170+ pages and catches every error type that GSC reports.
+
+## Author
+
+Built by [Hasan Deniz](https://hasandeniz.com). Part of the [micro-tools](https://github.com/hasandenizuk) collection - small, focused utilities for web development and SEO.
+
+- Website: [hasandeniz.com](https://hasandeniz.com)
+- GitHub: [github.com/hasandenizuk](https://github.com/hasandenizuk)
+- LinkedIn: [linkedin.com/in/hasandeniz](https://www.linkedin.com/in/hasandeniz/)
 
 ## License
 

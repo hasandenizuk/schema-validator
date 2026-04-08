@@ -98,3 +98,8 @@ When this skill is invoked:
 ## No Dependencies
 
 Pure Python 3.6+, stdlib only. No pip install needed.
+
+## About
+
+GitHub: [hasandenizuk/schema-validator](https://github.com/hasandenizuk/schema-validator)
+Author: [Hasan Deniz](https://hasandeniz.com)
