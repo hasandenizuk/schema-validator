@@ -4,8 +4,6 @@ A zero-dependency Python CLI tool that validates JSON-LD structured data in HTML
 
 Run it on any static site, CMS output, or build directory to catch schema errors before Google does.
 
-**Author:** [Hasan Deniz](https://hasandeniz.com) | **GitHub:** [hasandenizuk/schema-validator](https://github.com/hasandenizuk/schema-validator) | **License:** MIT
-
 ## Why This Exists
 
 Google Search Console reports structured data errors days or weeks after crawling. By then, your pages have been live with broken or incomplete schema markup, missing rich results opportunities.
