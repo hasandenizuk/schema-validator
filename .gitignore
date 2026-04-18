@@ -6,3 +6,6 @@ schema-report.json
 # Session tracking (project-level hook noise; never commit into tool repos)
 SESSION_LOG.md
 PROGRESS.md
+
+# Internal CLAUDE.md stub for local Claude sessions, not for public repo
+CLAUDE.md
