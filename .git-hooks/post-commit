@@ -1,0 +1,55 @@
+#!/bin/sh
+# post-commit - auto-appends this commit's subject to CHANGELOG.md under [Unreleased].
+# For monorepos, prepends the top-level subfolder(s) touched by the commit as a tag.
+# Loop protection: skips commits whose subject starts with "chore(changelog):".
+# The hook only modifies the working tree; the next commit will pick up the CHANGELOG change.
+
+set -e
+
+MSG=$(git log -1 --format=%s)
+HASH=$(git log -1 --format=%h)
+
+case "$MSG" in
+  "chore(changelog):"*) exit 0 ;;
+esac
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+CHANGELOG="$REPO_ROOT/CHANGELOG.md"
+
+[ -f "$CHANGELOG" ] || exit 0
+
+# Detect which top-level subfolders were touched by this commit.
+# If more than one, join with commas. If none (root file changes only), skip the tag.
+TOP_DIRS=$(git diff-tree --no-commit-id --name-only -r HEAD 2>/dev/null \
+  | awk -F/ 'NF>1 {print $1}' \
+  | sort -u \
+  | grep -v '^\.git-hooks$' \
+  | tr '\n' ',' \
+  | sed 's/,$//')
+
+if [ -n "$TOP_DIRS" ]; then
+  ENTRY="- [$TOP_DIRS] $MSG ($HASH)"
+else
+  ENTRY="- $MSG ($HASH)"
+fi
+
+# Ensure [Unreleased] section exists. If not, insert one right after the H1 title.
+if ! grep -q "^## \[Unreleased\]" "$CHANGELOG"; then
+  TMP=$(mktemp)
+  awk 'NR==1{print; print ""; print "## [Unreleased]"; print ""; next} {print}' "$CHANGELOG" > "$TMP"
+  mv "$TMP" "$CHANGELOG"
+fi
+
+# Insert the new entry on the line right after the [Unreleased] heading.
+TMP=$(mktemp)
+awk -v entry="$ENTRY" '
+  { print }
+  /^## \[Unreleased\]/ && !inserted {
+    print ""
+    print entry
+    inserted = 1
+  }
+' "$CHANGELOG" > "$TMP"
+mv "$TMP" "$CHANGELOG"
+
+echo "post-commit: appended to CHANGELOG.md [Unreleased] -> $ENTRY"

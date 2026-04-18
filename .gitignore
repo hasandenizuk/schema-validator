@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .DS_Store
 schema-report.json
+
+# Session tracking (project-level hook noise; never commit into tool repos)
+SESSION_LOG.md
+PROGRESS.md
