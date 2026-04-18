@@ -4,5 +4,7 @@ All notable changes to this project are recorded here. The [Unreleased] section 
 
 ## [Unreleased]
 
+- chore(gitignore): exclude CLAUDE.md from public tracking (2c79426)
+
 - chore(init): scaffold schema-validator repo with changelog-automation (b90007c)
 
